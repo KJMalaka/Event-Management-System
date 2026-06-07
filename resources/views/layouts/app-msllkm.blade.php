@@ -115,10 +115,10 @@
 </head>
 <body class="min-h-screen bg-[var(--color-primary)] text-[var(--color-text)] font-sans antialiased">
 
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col pt-24">
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-[rgba(26,26,46,0.78)] backdrop-blur-xl">
+    <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[rgba(26,26,46,0.78)] backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div class="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-[rgba(22,33,62,0.55)] px-4 sm:px-5 py-3 shadow-lg-custom">
 

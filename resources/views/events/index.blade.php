@@ -54,52 +54,13 @@
 
                     <div class="mt-4 overflow-x-auto pb-3">
                         <div class="flex gap-4 w-max">
-                            @php
-                                $featured = [
-                                    [
-                                        'title' => 'Cape Town Jazz Festival',
-                                        'status' => 'published',
-                                        'location' => 'CTICC, Cape Town',
-                                        'start_time' => '2026-03-14 20:00:00',
-                                        'end_time' => null,
-                                        'formatted_price' => 'R 850.00 - R 2,200.00',
-                                        'banner_image' => null,
-                                        'slug' => 'cape-town-jazz-festival',
-                                        'id' => 1,
-                                    ],
-                                    [
-                                        'title' => 'Amapiano All-Stars: The Return',
-                                        'status' => 'published',
-                                        'location' => 'FNB Stadium, Soweto',
-                                        'start_time' => '2026-04-12 18:00:00',
-                                        'end_time' => null,
-                                        'formatted_price' => 'R 350.00 - R 1,500.00',
-                                        'banner_image' => null,
-                                        'slug' => 'amapiano-all-stars-the-return',
-                                        'id' => 2,
-                                    ],
-                                    [
-                                        'title' => 'Design Indaba',
-                                        'status' => 'published',
-                                        'location' => 'CTICC Cape Town',
-                                        'start_time' => '2026-09-20 09:00:00',
-                                        'end_time' => null,
-                                        'formatted_price' => 'R 4,500.00',
-                                        'banner_image' => null,
-                                        'slug' => 'design-indaba',
-                                        'id' => 3,
-                                    ],
-                                ];
-                            @endphp
-
-                            @foreach($featured as $f)
-                                @php
-                                    $fEvent = (object) $f;
-                                @endphp
+                            @forelse($events->take(3) as $featured)
                                 <div class="w-[18rem] sm:w-[22rem]">
-                                    <x-event-card-msllkm :event="$fEvent" />
+                                    <x-event-card-msllkm :event="$featured" />
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="text-white/60 text-sm">No featured events available</div>
+                            @endforelse
                         </div>
                     </div>
 
@@ -135,19 +96,15 @@
         </div>
 
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            @forelse($events as $event)
+            @forelse($events->take(6) as $event)
                 <x-event-card-msllkm :event="$event" />
             @empty
                 <div class="sm:col-span-2 lg:col-span-3 text-center py-20">
                     <div class="text-white/80 font-bold text-lg">No events found</div>
-                    <div class="text-white/60 text-sm mt-2">Check back soon—SA weekends don’t sleep.</div>
+                    <div class="text-white/60 text-sm mt-2">Check back soon—SA weekends don't sleep.</div>
                 </div>
             @endforelse
         </div>
-
-        <div class="pb-10">
-            {{ $events->links() }}
-                    <div class="h-px flex-1 bg-[var(--color-accent-35)]"></div>
     </section>
-                    <div class="h-px flex-1 bg-[var(--color-accent-35)]"></div>
 
+@endsection
